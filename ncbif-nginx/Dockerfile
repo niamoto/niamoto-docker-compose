@@ -18,4 +18,4 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 EXPOSE 80
 
 # Start nginx service
-CMD service nginx start
+CMD nginx
