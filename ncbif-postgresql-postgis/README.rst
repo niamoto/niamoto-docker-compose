@@ -1,6 +1,6 @@
-==============================
-ncbif-postgresql-postgis image
-==============================
+========================
+ncbif-postgresql-postgis
+========================
 
 This image contains a PostgreSQL/postGIS service.
 
