@@ -17,3 +17,16 @@ RUN if ls /tmp/resources/plugins/*.zip > /dev/null 2>&1; then \
     fi
 
 RUN rm -rf /tmp/resources
+
+# Create ncbif user
+#RUN curl -X POST \
+#         --data '{"userName": "ncbif", "password": "ncbif", "enabled": true}' \
+#         -H "accept: application/json" -H "content-type: application/json" \
+#         -u admin:geoserver localhost:8080/geoserver/geofence/rest/usergroup/users/
+
+COPY docker-entrypoint.sh /
+RUN chmod +x /docker-entrypoint.sh
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+CMD ["geoserver"]
