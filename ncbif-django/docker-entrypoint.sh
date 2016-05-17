@@ -12,4 +12,5 @@ python ncbif-portal/manage.py migrate
 
 # Start server
 echo "Starting server"
-python ncbif-portal/manage.py runserver 0.0.0.0:80
+#python ncbif-portal/manage.py runserver 0.0.0.0:80
+./gunicorn_start.sh

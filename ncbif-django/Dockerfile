@@ -12,6 +12,11 @@ RUN pip install --upgrade pip
 RUN mkdir -p /home/ncbif
 WORKDIR /home/ncbif
 
+# Install Gunicorn
+RUN pip install gunicorn
+COPY gunicorn_start.sh ./
+RUN chmod +x ./gunicorn_start.sh
+
 # Download and install django-ncbif-taxa
 RUN git clone https://gitlab.com/ncbif/django-ncbif-taxa.git && \
     pip install -r django-ncbif-taxa/requirements.txt &&\
@@ -44,5 +49,7 @@ RUN python ncbif-portal/generate_secret_key.py --path ncbif-portal/ncbif/setting
 
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
+
+EXPOSE 8000
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
