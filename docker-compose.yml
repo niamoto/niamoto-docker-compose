@@ -1,0 +1,30 @@
+version: '2'
+services:
+    ncbif-postgres:
+        build: ./ncbif-postgresql-postgis
+        volumes:
+            - /home/ncbif/volumes/ncbif-postgres/conf:/etc/postgresql
+            - /home/ncbif/volumes/ncbif-postgres/log:var/log/postgresql
+            - /home/ncbif/volumes/ncbif-postgres/data:/var/lib/postgresql
+    ncbif-geoserver:
+        build: ./ncbif-geoserver
+        ports:
+            - "8080:8080"
+        volumes:
+            - /home/ncbif
+        depends_on:
+            - ncbif-postgres
+    ncbif-rabbitmq:
+        build: ./ncbif-rabbitmq
+    ncbif-nginx:
+        build: ./ncbif-nginx
+        ports:
+            - "80:80"
+        depends_on:
+            - ncbif-django
+    ncbif-django:
+        build: ./ncbif-django
+        depends_on:
+            - ncbif-postgres
+            - ncbif-geoserver
+            - ncbif-rabbitmq
