@@ -14,7 +14,7 @@ WORKDIR /home/ncbif
 
 # Install Gunicorn
 RUN pip install gunicorn
-COPY gunicorn_start.sh ./
+ADD gunicorn_start.sh ./
 RUN chmod +x ./gunicorn_start.sh
 
 # Download and install django-ncbif-taxa
@@ -41,13 +41,16 @@ RUN git clone https://gitlab.com/ncbif/django-ncbif-geoserver-admin.git && \
 RUN git clone https://gitlab.com/ncbif/ncbif-portal.git && \
     pip install -r ncbif-portal/requirements.txt
 
-# Copy the ncbif django template setting file
+# Add the ncbif django template setting file
 ADD settings.py ncbif-portal/ncbif/
+
+# Add wait_for_postgres script
+ADD wait_for_postgres.py /home/ncbif
 
 # Generate django's secret key
 RUN python ncbif-portal/generate_secret_key.py --path ncbif-portal/ncbif/settings.py
 
-COPY docker-entrypoint.sh /
+ADD docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
 EXPOSE 8000
