@@ -7,6 +7,7 @@ services:
             - ncbif-postgres_conf:/etc/postgresql
             - ncbif-postgres_log:/var/log/postgresql
             - ncbif-postgres_data:/var/lib/postgresql
+        restart: always
     ncbif-geoserver:
         build: ./ncbif-geoserver
         ports:
@@ -15,8 +16,10 @@ services:
             - ncbif-geoserver_data:/opt/geoserver/data_dir
         depends_on:
             - ncbif-postgres
+        restart: always
     ncbif-rabbitmq:
         build: ./ncbif-rabbitmq
+        restart: always
     ncbif-nginx:
         build: ./ncbif-nginx
         ports:
@@ -25,6 +28,7 @@ services:
             - ncbif-django
         volumes_from:
             - ncbif-django:ro
+        restart: always
     ncbif-django:
         build: ./ncbif-django
         depends_on:
@@ -33,6 +37,7 @@ services:
             - ncbif-rabbitmq
         volumes:
             - ncbif-django_site_media:/home/ncbif/ncbif-portal/site_media
+        restart: always
 
 volumes:
     ncbif-postgres_data:
