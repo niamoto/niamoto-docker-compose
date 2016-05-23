@@ -138,6 +138,11 @@ MEDIA_URL = 'site_media/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'site_media', 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
 
+# Celery settings
+CELERY_BROKER = 'amqp://ncbif-rabbitmq:5672//'
+CELERY_BACKEND = 'amqp://ncbif-rabbitmq:5672//'
+
+# REST settings
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
