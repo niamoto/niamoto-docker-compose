@@ -1,0 +1,37 @@
+#!/bin/bash
+
+NAME=flower
+DESC="flower daemon"
+
+# Name of the projects settings module.
+export DJANGO_SETTINGS_MODULE="ncbif.settings"
+
+# Where the Django project is.
+FLOWER_CHDIR="/home/ncbif/ncbif-portal"
+
+# How to call "manage.py celery flower" (args...)
+FLOWERCTL="/home/ncbif/flower_startup.sh"
+
+set -e
+
+case "$1" in
+  start)
+        echo -n "Starting $DESC: "
+        start-stop-daemon --start --pidfile $PID_FILE \
+            --chdir $FLOWER_CHDIR --chuid ncbif \
+            --user ncbif --group ncbif --background \
+            --make-pidfile \
+            --exec "$FLOWERCTL"
+        echo "$NAME."
+        ;;
+
+  stop)
+        echo -n "Stopping $DESC: "
+        PID=`ps -ef | awk '/[f]lower -A ncbif/{print $2}'`
+        start-stop-daemon --stop --quiet --oknodo \
+            --pid=$PID
+        echo "$NAME."
+        ;;
+esac
+
+exit 0

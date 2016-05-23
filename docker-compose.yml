@@ -24,6 +24,7 @@ services:
         build: ./ncbif-nginx
         ports:
             - "80:80"
+            - "5555:5555"
         depends_on:
             - ncbif-django
         volumes_from:
