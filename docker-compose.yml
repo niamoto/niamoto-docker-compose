@@ -1,13 +1,17 @@
 version: '2'
 
+
 services:
     ncbif-postgres:
         build: ./ncbif-postgresql-postgis
         volumes:
             - ncbif-postgres_conf:/etc/postgresql
             - ncbif-postgres_log:/var/log/postgresql
-            - ncbif-postgres_data:/var/lib/postgresql
+            - ncbif-postgres_data:/var/lib/postgresql/data/pgdata
+        environment:
+            - PGDATA=/var/lib/postgresql/data/pgdata
         restart: always
+
     ncbif-geoserver:
         build: ./ncbif-geoserver
         ports:
@@ -17,9 +21,11 @@ services:
         depends_on:
             - ncbif-postgres
         restart: always
+
     ncbif-rabbitmq:
         build: ./ncbif-rabbitmq
         restart: always
+
     ncbif-nginx:
         build: ./ncbif-nginx
         ports:
@@ -30,6 +36,7 @@ services:
         volumes_from:
             - ncbif-django:ro
         restart: always
+
     ncbif-django:
         build: ./ncbif-django
         depends_on:
@@ -40,14 +47,19 @@ services:
             - ncbif-django_site_media:/home/ncbif/ncbif-portal/site_media
         restart: always
 
+
 volumes:
     ncbif-postgres_data:
         external: false
+
     ncbif-postgres_log:
         external: false
+
     ncbif-postgres_conf:
         external: false
+
     ncbif-geoserver_data:
         external: false
+
     ncbif-django_site_media:
         external: false
