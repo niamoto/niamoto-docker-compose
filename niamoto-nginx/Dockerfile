@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y nginx
 # Remove default Nginx conf file
 RUN rm -v /etc/nginx/nginx.conf
 
-# Copy the ncbif Nginx conf file
+# Copy the niamoto Nginx conf file
 ADD nginx.conf /etc/nginx/
 
 # Append "daemon off;" to the beginning of the configuration

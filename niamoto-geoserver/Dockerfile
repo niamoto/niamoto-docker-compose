@@ -18,9 +18,9 @@ RUN if ls /tmp/resources/plugins/*.zip > /dev/null 2>&1; then \
 
 RUN rm -rf /tmp/resources
 
-# Create ncbif user
+# Create niamoto user
 #RUN curl -X POST \
-#         --data '{"userName": "ncbif", "password": "ncbif", "enabled": true}' \
+#         --data '{"userName": "niamoto", "password": "niamoto", "enabled": true}' \
 #         -H "accept: application/json" -H "content-type: application/json" \
 #         -u admin:geoserver localhost:8080/geoserver/geofence/rest/usergroup/users/
 

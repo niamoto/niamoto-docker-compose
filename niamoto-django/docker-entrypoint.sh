@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Change owner of site media directory to ncbif
-sudo chown -R ncbif /home/ncbif/ncbif-portal/site_media
+# Change owner of site media directory to niamoto
+sudo chown -R niamoto /home/niamoto/niamoto-portal/site_media
 
 # Wait for postgres server to be ready
 sleep 3
@@ -10,17 +10,17 @@ python wait_for_postgres.py
 
 # Collect static files
 echo "Collecting static files"
-python ncbif-portal/manage.py collectstatic --noinput
+python niamoto-portal/manage.py collectstatic --noinput
 
 # Make and apply migrations
 echo "Making migrations"
-python ncbif-portal/manage.py makemigrations
+python niamoto-portal/manage.py makemigrations
 echo "Applying migrations"
-python ncbif-portal/manage.py migrate
+python niamoto-portal/manage.py migrate
 
 # Create default superuser if does not exist
-echo "Creating default superuser if needed (ncbif_admin)"
-python ncbif-portal/manage.py shell < init_superuser.py
+echo "Creating default superuser if needed (niamoto_admin)"
+python niamoto-portal/manage.py shell < init_superuser.py
 
 # Start celery worker
 echo "Starting celery worker"

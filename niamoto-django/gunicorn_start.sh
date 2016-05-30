@@ -1,12 +1,12 @@
 #!/bin/bash
 
-NAME="ncbif-portal"                      # Name of the application (*)
-DJANGODIR=/home/ncbif/ncbif-portal       # Django project directory (*)
+NAME="niamoto-portal"                      # Name of the application (*)
+DJANGODIR=/home/niamoto/niamoto-portal       # Django project directory (*)
 USER=`whoami`                            # the user to run as (*)
 GROUP=`whoami`                           # the group to run as (*)
 NUM_WORKERS=1                            # how many worker processes should Gunicorn spawn (*)
-DJANGO_SETTINGS_MODULE=ncbif.settings    # which settings file should Django use (*)
-DJANGO_WSGI_MODULE=ncbif.wsgi            # WSGI module name (*)
+DJANGO_SETTINGS_MODULE=niamoto.settings    # which settings file should Django use (*)
+DJANGO_WSGI_MODULE=niamoto.wsgi            # WSGI module name (*)
 
 echo "Starting $NAME as `whoami`"
 
@@ -23,5 +23,5 @@ exec gunicorn ${DJANGO_WSGI_MODULE}:application \
   --workers $NUM_WORKERS \
   --user $USER \
   --bind=0.0.0.0:8000 \
-  --pid /home/ncbif/gunicorn.pid
+  --pid /home/niamoto/gunicorn.pid
 

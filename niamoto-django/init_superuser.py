@@ -3,9 +3,9 @@
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
-DEFAULT_ADMIN_USERNAME = "ncbif_admin"
-DEFAULT_ADMIN_EMAIL = "ncbif_admin@ncbif.nc"
-DEFAULT_ADMIN_PASSWORD = "ncbif"
+DEFAULT_ADMIN_USERNAME = "niamoto_admin"
+DEFAULT_ADMIN_EMAIL = "niamoto_admin@niamoto.nc"
+DEFAULT_ADMIN_PASSWORD = "niamoto"
 
 try:
     User.objects.get(username=DEFAULT_ADMIN_USERNAME)

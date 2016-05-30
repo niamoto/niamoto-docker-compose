@@ -8,7 +8,7 @@ port = 5432
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 while True:
     try:
-        s.connect(('ncbif-postgres', port))
+        s.connect(('niamoto-postgres', port))
         s.close()
         break
     except socket.error as ex:

@@ -13,12 +13,12 @@ CELERY_BIN="/usr/local/bin/celery"
 
 # App instance to use
 # comment out this line if you don't use an app
-CELERY_APP="ncbif"
+CELERY_APP="niamoto"
 # or fully qualified:
 #CELERY_APP="proj.tasks:app"
 
 # Where to chdir at start.
-CELERYD_CHDIR="/home/ncbif/ncbif-portal"
+CELERYD_CHDIR="/home/niamoto/niamoto-portal"
 
 # Extra command-line arguments to the worker
 CELERYD_OPTS="--time-limit=300 --concurrency=8"
@@ -30,8 +30,8 @@ CELERYD_PID_FILE="/var/run/celery/%N.pid"
 # Workers should run as an unprivileged user.
 #   You need to create this user manually (or you can choose
 #   a user/group combination that already exists, e.g. nobody).
-CELERYD_USER="ncbif"
-CELERYD_GROUP="ncbif"
+CELERYD_USER="niamoto"
+CELERYD_GROUP="niamoto"
 
 # If enabled pid and log directories will be created if missing,
 # and owned by the userid/group configured.

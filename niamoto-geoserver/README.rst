@@ -1,5 +1,5 @@
 ===============
-ncbif-geoserver
+niamoto-geoserver
 ===============
 
 This image contains a Geoserver service.

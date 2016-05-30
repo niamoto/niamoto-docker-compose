@@ -2,64 +2,71 @@ version: '2'
 
 
 services:
-    ncbif-postgres:
-        build: ./ncbif-postgresql-postgis
+    niamoto-postgres:
+        build: ./niamoto-postgresql-postgis
         volumes:
-            - ncbif-postgres_conf:/etc/postgresql
-            - ncbif-postgres_log:/var/log/postgresql
-            - ncbif-postgres_data:/var/lib/postgresql/data/pgdata
+            - niamoto-postgres_conf:/etc/postgresql
+            - niamoto-postgres_log:/var/log/postgresql
+            - niamoto-postgres_data:/var/lib/postgresql/data/pgdata
         environment:
             - PGDATA=/var/lib/postgresql/data/pgdata
         restart: always
 
-    ncbif-geoserver:
-        build: ./ncbif-geoserver
+    niamoto-geoserver:
+        build: ./niamoto-geoserver
         ports:
             - "8080:8080"
         volumes:
-            - ncbif-geoserver_data:/opt/geoserver/data_dir
+            - niamoto-geoserver_data:/opt/geoserver/data_dir
         depends_on:
-            - ncbif-postgres
+            - niamoto-postgres
         restart: always
 
-    ncbif-rabbitmq:
-        build: ./ncbif-rabbitmq
+    niamoto-rabbitmq:
+        build: ./niamoto-rabbitmq
         restart: always
 
-    ncbif-nginx:
-        build: ./ncbif-nginx
+    niamoto-nginx:
+        build: ./niamoto-nginx
         ports:
             - "80:80"
             - "5555:5555"
         depends_on:
-            - ncbif-django
+            - niamoto-django
         volumes_from:
-            - ncbif-django:ro
+            - niamoto-django:ro
         restart: always
 
-    ncbif-django:
-        build: ./ncbif-django
+    niamoto-django:
+        build:
+            context: ./niamoto-django
+            args:
+                - NIAMOTO_TAXA_VERSION=9e4cd7e242ca1f6dc8088d17b35be7c53155835d
+                - NIAMOTO_OCCURRENCES_VERSION=be16fe2dc80bff8ac81439bf37031926bcbc168c
+                - NIAMOTO_PLANTNOTE_VERSION=c8177aca920fdfbe98ce8d5ce035c6e85a7dd17d
+                - NIAMOTO_GEOSERVER_ADMIN_VERSION=2e15462e1d5d3dadc30572f6ea42848ca674ecb9
+                - NIAMOTO_PORTAL_VERSION=0650c0d431c0e489180c39435da6e13a33b300c6
         depends_on:
-            - ncbif-postgres
-            - ncbif-geoserver
-            - ncbif-rabbitmq
+            - niamoto-postgres
+            - niamoto-geoserver
+            - niamoto-rabbitmq
         volumes:
-            - ncbif-django_site_media:/home/ncbif/ncbif-portal/site_media
+            - niamoto-django_site_media:/home/niamoto/niamoto-portal/site_media
         restart: always
 
 
 volumes:
-    ncbif-postgres_data:
+    niamoto-postgres_data:
         external: false
 
-    ncbif-postgres_log:
+    niamoto-postgres_log:
         external: false
 
-    ncbif-postgres_conf:
+    niamoto-postgres_conf:
         external: false
 
-    ncbif-geoserver_data:
+    niamoto-geoserver_data:
         external: false
 
-    ncbif-django_site_media:
+    niamoto-django_site_media:
         external: false

@@ -1,8 +1,8 @@
 ============
-ncbif-django
+niamoto-django
 ============
 
-This image contains the ncbif Django application.
+This image contains the niamoto Django application.
 
 It served by Gunicorn, which writes to a unix socket supposed to be listened
 by a reverse proxy such as nginx.

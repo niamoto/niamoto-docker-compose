@@ -1,5 +1,5 @@
 ==============
-ncbif-rabbitmq
+niamoto-rabbitmq
 ==============
 
 This image contains a RabbitMQ service.
