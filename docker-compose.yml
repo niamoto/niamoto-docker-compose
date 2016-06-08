@@ -54,6 +54,14 @@ services:
             - niamoto-django_site_media:/home/niamoto/niamoto-portal/site_media
         restart: always
 
+    niamoto-ssdm:
+        build: ./niamoto-ssdm
+        ports:
+            - "4037:4037"
+        volumes:
+            - /home/niamoto/SSDM_data:/home/SSDM_data
+        restart: always
+
 
 volumes:
     niamoto-postgres_data:
