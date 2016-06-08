@@ -14,9 +14,12 @@ RUN apt-get update -qq \
     && rm -rf /var/lib/apt/lists/ \
     && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
 
+RUN apt-get install libgdal-dev libproj-dev
+
 RUN R -e "install.packages('devtools')"
 RUN R -e "install.packages('shiny')"
 RUN R -e "install.packages('shinyFiles')"
+RUN R -e "install.packages('rgdal')"
 RUN R -e "devtools::install_github('dimitri-justeau/SSDM')"
 
 ADD load_SSDM_gui.R /load_SSDM_gui.R
