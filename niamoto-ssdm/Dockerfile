@@ -9,12 +9,9 @@ RUN apt-get update -qq \
         libsqlite3-dev \
         libxml2-dev \
         qpdf \
-        vim \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/ \
-    && rm -rf /tmp/downloaded_packages/ /tmp/*.rds
+        vim
 
-RUN apt-get install libgdal-dev libproj-dev
+RUN apt-get update install libgdal-dev libproj-dev
 
 RUN R -e "install.packages('devtools')"
 RUN R -e "install.packages('shiny')"
