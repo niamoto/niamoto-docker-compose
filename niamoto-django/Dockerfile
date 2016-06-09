@@ -27,7 +27,7 @@ ADD gunicorn_start.sh ./
 RUN sudo chmod +x ./gunicorn_start.sh
 
 # Download and install django-niamoto-taxa
-RUN git clone https://gitlab.com/niamoto/django-niamoto-taxa.git && \
+RUN git clone https://github.com/niamoto/django-niamoto-taxa.git && \
     cd django-niamoto-taxa && \
     git checkout $NIAMOTO_TAXA_VERSION && \
     cd .. && \
@@ -35,7 +35,7 @@ RUN git clone https://gitlab.com/niamoto/django-niamoto-taxa.git && \
     sudo pip install ./django-niamoto-taxa
 
 # Download and install django-niamoto-occurrences
-RUN git clone https://gitlab.com/niamoto/django-niamoto-occurrences.git && \
+RUN git clone https://github.com/niamoto/django-niamoto-occurrences.git && \
     cd django-niamoto-occurrences && \
     git checkout $NIAMOTO_OCCURRENCES_VERSION && \
     cd .. && \
@@ -43,7 +43,7 @@ RUN git clone https://gitlab.com/niamoto/django-niamoto-occurrences.git && \
     sudo pip install ./django-niamoto-occurrences
 
 # Download and install django-niamoto-plantnote
-RUN git clone https://gitlab.com/niamoto/django-niamoto-plantnote.git && \
+RUN git clone https://github.com/niamoto/django-niamoto-plantnote.git && \
     cd django-niamoto-plantnote && \
     git checkout $NIAMOTO_PLANTNOTE_VERSION && \
     cd .. && \
@@ -51,7 +51,7 @@ RUN git clone https://gitlab.com/niamoto/django-niamoto-plantnote.git && \
     sudo pip install ./django-niamoto-plantnote
 
 # Download and install django-niamoto-geoserver-admin
-RUN git clone https://gitlab.com/niamoto/django-niamoto-geoserver-admin.git && \
+RUN git clone https://github.com/niamoto/django-niamoto-geoserver-admin.git && \
     cd django-niamoto-geoserver-admin && \
     git checkout $NIAMOTO_GEOSERVER_ADMIN_VERSION && \
     cd .. && \
@@ -59,7 +59,7 @@ RUN git clone https://gitlab.com/niamoto/django-niamoto-geoserver-admin.git && \
     sudo pip install ./django-niamoto-geoserver-admin
 
 # Download and install niamoto-portal
-RUN git clone https://gitlab.com/niamoto/niamoto-portal.git && \
+RUN git clone https://github.com/niamoto/niamoto-portal.git && \
     cd niamoto-portal && \
     git checkout $NIAMOTO_PORTAL_VERSION && \
     cd .. && \
