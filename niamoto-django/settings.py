@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -39,14 +40,25 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'django.contrib.sites',
+
     # Third party
     'mptt',
     'rest_framework',
+
     # Project
     'niamoto_taxa',
     'niamoto_occurrences',
     'niamoto_plantnote',
     'niamoto_geoserver_admin',
+    'restapi',
+    'web_portal',
+
+    # Pinax
+    'pinax_theme_bootstrap',
+    'bootstrapform',
+    'account',
+    'webanalytics',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -58,6 +70,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'account.middleware.LocaleMiddleware',
+    'account.middleware.TimezoneMiddleware',
 ]
 
 ROOT_URLCONF = 'niamoto.urls'
@@ -72,7 +86,10 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.core.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
+                'pinax_theme_bootstrap.context_processors.theme',
+                'account.context_processors.account',
             ],
         },
     },

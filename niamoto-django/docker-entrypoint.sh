@@ -18,6 +18,10 @@ python niamoto-portal/manage.py makemigrations
 echo "Applying migrations"
 python niamoto-portal/manage.py migrate
 
+# Loading fixture data
+echo "Loading fixtures"
+python niamoto-portal/manage.py loaddata fixtures/sites.json
+
 # Create default superuser if does not exist
 echo "Creating default superuser if needed (niamoto_admin)"
 python niamoto-portal/manage.py shell < init_superuser.py
