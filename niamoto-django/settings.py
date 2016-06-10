@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'pinax_theme_bootstrap',
     'bootstrapform',
     'account',
-    'webanalytics',
+    'pinax.webanalytics',
 ]
 
 MIDDLEWARE_CLASSES = [
