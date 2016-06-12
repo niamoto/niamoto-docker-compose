@@ -11,6 +11,9 @@ ARG NIAMOTO_PORTAL_VERSION
 # Update and install git
 RUN apt-get update && apt-get install -y git && apt-get install sudo && apt-get install daemon
 
+# Install geospatial dependencies
+RUN sudo apt-get install -y binutils libproj-dev gdal-bin
+
 # Upgrade pip
 RUN pip install --upgrade pip
 
