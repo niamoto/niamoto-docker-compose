@@ -14,13 +14,13 @@ python niamoto-portal/manage.py collectstatic --noinput
 
 # Make and apply migrations
 echo "Making migrations"
-python niamoto-portal/manage.py makemigrations
+sudo python niamoto-portal/manage.py makemigrations
 echo "Applying migrations"
-python niamoto-portal/manage.py migrate
+sudo python niamoto-portal/manage.py migrate
 
 # Loading fixture data
 echo "Loading fixtures"
-python niamoto-portal/manage.py loaddata fixtures/sites.json
+python niamoto-portal/manage.py loaddata niamoto-portal/fixtures/sites.json
 
 # Create default superuser if does not exist
 echo "Creating default superuser if needed (niamoto_admin)"
