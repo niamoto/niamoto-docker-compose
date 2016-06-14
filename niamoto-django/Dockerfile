@@ -5,6 +5,7 @@ MAINTAINER Dimitri Justeau <dimitri.justeau@gmail.com>
 ARG NIAMOTO_TAXA_VERSION
 ARG NIAMOTO_OCCURRENCES_VERSION
 ARG NIAMOTO_PLANTNOTE_VERSION
+ARG NIAMOTO_MASSIFS_VERSION
 ARG NIAMOTO_GEOSERVER_ADMIN_VERSION
 ARG NIAMOTO_PORTAL_VERSION
 
@@ -52,6 +53,14 @@ RUN git clone https://github.com/niamoto/django-niamoto-plantnote.git && \
     cd .. && \
     sudo pip install -r django-niamoto-plantnote/requirements.txt &&\
     sudo pip install ./django-niamoto-plantnote
+
+# Download and install django-niamoto-massifs
+RUN git clone https://github.com/niamoto/django-niamoto-massifs.git && \
+    cd django-niamoto-massifs && \
+    git checkout $NIAMOTO_MASSIFS_VERSION && \
+    cd .. && \
+    sudo pip install -r django-niamoto-massifs/requirements.txt &&\
+    sudo pip install ./django-niamoto-massifs
 
 # Download and install django-niamoto-geoserver-admin
 RUN git clone https://github.com/niamoto/django-niamoto-geoserver-admin.git && \

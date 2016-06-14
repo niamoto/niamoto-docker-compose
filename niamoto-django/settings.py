@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'niamoto_taxa',
     'niamoto_occurrences',
     'niamoto_plantnote',
+    'niamoto_massifs',
     'niamoto_geoserver_admin',
     'restapi',
     'web_portal',

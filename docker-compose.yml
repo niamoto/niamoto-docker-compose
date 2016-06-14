@@ -44,8 +44,9 @@ services:
                 - NIAMOTO_TAXA_VERSION=9e4cd7e242ca1f6dc8088d17b35be7c53155835d
                 - NIAMOTO_OCCURRENCES_VERSION=be16fe2dc80bff8ac81439bf37031926bcbc168c
                 - NIAMOTO_PLANTNOTE_VERSION=c8177aca920fdfbe98ce8d5ce035c6e85a7dd17d
+                - NIAMOTO_MASSIFS_VERSION=35f65d56693bf9b119bc6e91e43f2818e1b14829
                 - NIAMOTO_GEOSERVER_ADMIN_VERSION=551fad26a2f620ac0fadec5eaaab99a5be4016e1
-                - NIAMOTO_PORTAL_VERSION=180e8ce6df480a8129a8247f9d46284f4439b36f
+                - NIAMOTO_PORTAL_VERSION=a5bc3ac28eea7c21095e01497d09a289788e2575
         depends_on:
             - niamoto-postgres
             - niamoto-geoserver
