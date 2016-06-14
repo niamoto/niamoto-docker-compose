@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 SITE_ID = 1
 
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,6 +47,8 @@ INSTALLED_APPS = [
     # Third party
     'mptt',
     'rest_framework',
+    'constance',
+    'constance.backends.database',
 
     # Project
     'niamoto_taxa',
@@ -178,3 +182,13 @@ REST_API_BASE_URL = '/'.join((
     REST_API_URL_PREFIX,
     REST_API_VERSION,
 ))
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_USE_TLS = True
+
+CONSTANCE_CONFIG = {
+    'EMAIL_HOST': ('', 'Email provider host'),
+    'EMAIL_HOST_USER': ('', 'Email provider user'),
+    'EMAIL_HOST_PASSWORD': ('', 'Email provider password'),
+    'EMAIL_PORT': (587, 'Email provider port'),
+}
