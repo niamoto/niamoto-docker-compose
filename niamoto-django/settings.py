@@ -183,12 +183,14 @@ REST_API_BASE_URL = '/'.join((
     REST_API_VERSION,
 ))
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-EMAIL_USE_TLS = True
+ACCOUNT_HOOKSET = "web_portal.hooks.AccountGmailHookset"
 
 CONSTANCE_CONFIG = {
+    # Email configuration
+    'DEFAULT_FROM_EMAIL': ('niamoto.nc@gmail.com', 'Default email from'),
     'EMAIL_HOST': ('', 'Email provider host'),
     'EMAIL_HOST_USER': ('', 'Email provider user'),
     'EMAIL_HOST_PASSWORD': ('', 'Email provider password'),
     'EMAIL_PORT': (587, 'Email provider port'),
 }
+
