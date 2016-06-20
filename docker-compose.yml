@@ -46,7 +46,7 @@ services:
                 - NIAMOTO_PLANTNOTE_VERSION=c8177aca920fdfbe98ce8d5ce035c6e85a7dd17d
                 - NIAMOTO_MASSIFS_VERSION=35f65d56693bf9b119bc6e91e43f2818e1b14829
                 - NIAMOTO_GEOSERVER_ADMIN_VERSION=551fad26a2f620ac0fadec5eaaab99a5be4016e1
-                - NIAMOTO_PORTAL_VERSION=6a6cf96a9591fb5adb5b6935e8bf51459d7eba8a
+                - NIAMOTO_PORTAL_VERSION=c6e80ce4be33dfe6fce74135a27b9e89281824cb
         depends_on:
             - niamoto-postgres
             - niamoto-geoserver
