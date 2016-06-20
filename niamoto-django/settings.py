@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+PROJECT_DIR = os.path.dirname(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -91,10 +91,9 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.core.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
-                'pinax_theme_bootstrap.context_processors.theme',
                 'account.context_processors.account',
+                'pinax_theme_bootstrap.context_processors.theme',
             ],
         },
     },
@@ -183,7 +182,7 @@ REST_API_BASE_URL = '/'.join((
     REST_API_VERSION,
 ))
 
-ACCOUNT_HOOKSET = "web_portal.hooks.AccountGmailHookset"
+ACCOUNT_HOOKSET = "web_portal.hooks.AccountGmailHookSet"
 
 CONSTANCE_CONFIG = {
     # Email configuration
