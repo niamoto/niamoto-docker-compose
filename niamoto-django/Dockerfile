@@ -2,10 +2,8 @@ FROM python:3.5
 
 MAINTAINER Dimitri Justeau <dimitri.justeau@gmail.com>
 
-ARG NIAMOTO_TAXA_VERSION
-ARG NIAMOTO_OCCURRENCES_VERSION
+ARG NIAMOTO_DATA_VERSION
 ARG NIAMOTO_PLANTNOTE_VERSION
-ARG NIAMOTO_MASSIFS_VERSION
 ARG NIAMOTO_GEOSERVER_ADMIN_VERSION
 ARG NIAMOTO_PORTAL_VERSION
 
@@ -30,21 +28,13 @@ RUN sudo pip install gunicorn
 ADD gunicorn_start.sh ./
 RUN sudo chmod +x ./gunicorn_start.sh
 
-# Download and install django-niamoto-taxa
-RUN git clone https://github.com/niamoto/django-niamoto-taxa.git && \
-    cd django-niamoto-taxa && \
-    git checkout $NIAMOTO_TAXA_VERSION && \
+# Download and install django-niamoto-data
+RUN git clone https://github.com/niamoto/django-niamoto-data.git && \
+    cd django-niamoto-data && \
+    git checkout $NIAMOTO_DATA_VERSION && \
     cd .. && \
-    sudo pip install -r django-niamoto-taxa/requirements.txt &&\
-    sudo pip install ./django-niamoto-taxa
-
-# Download and install django-niamoto-occurrences
-RUN git clone https://github.com/niamoto/django-niamoto-occurrences.git && \
-    cd django-niamoto-occurrences && \
-    git checkout $NIAMOTO_OCCURRENCES_VERSION && \
-    cd .. && \
-    sudo pip install -r django-niamoto-occurrences/requirements.txt &&\
-    sudo pip install ./django-niamoto-occurrences
+    sudo pip install -r django-niamoto-data/requirements.txt &&\
+    sudo pip install ./django-niamoto-data
 
 # Download and install django-niamoto-plantnote
 RUN git clone https://github.com/niamoto/django-niamoto-plantnote.git && \
@@ -53,14 +43,6 @@ RUN git clone https://github.com/niamoto/django-niamoto-plantnote.git && \
     cd .. && \
     sudo pip install -r django-niamoto-plantnote/requirements.txt &&\
     sudo pip install ./django-niamoto-plantnote
-
-# Download and install django-niamoto-massifs
-RUN git clone https://github.com/niamoto/django-niamoto-massifs.git && \
-    cd django-niamoto-massifs && \
-    git checkout $NIAMOTO_MASSIFS_VERSION && \
-    cd .. && \
-    sudo pip install -r django-niamoto-massifs/requirements.txt &&\
-    sudo pip install ./django-niamoto-massifs
 
 # Download and install django-niamoto-geoserver-admin
 RUN git clone https://github.com/niamoto/django-niamoto-geoserver-admin.git && \

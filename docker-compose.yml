@@ -41,12 +41,10 @@ services:
         build:
             context: ./niamoto-django
             args:
-                - NIAMOTO_TAXA_VERSION=9e4cd7e242ca1f6dc8088d17b35be7c53155835d
-                - NIAMOTO_OCCURRENCES_VERSION=be16fe2dc80bff8ac81439bf37031926bcbc168c
-                - NIAMOTO_PLANTNOTE_VERSION=c8177aca920fdfbe98ce8d5ce035c6e85a7dd17d
-                - NIAMOTO_MASSIFS_VERSION=35f65d56693bf9b119bc6e91e43f2818e1b14829
-                - NIAMOTO_GEOSERVER_ADMIN_VERSION=551fad26a2f620ac0fadec5eaaab99a5be4016e1
-                - NIAMOTO_PORTAL_VERSION=c6e80ce4be33dfe6fce74135a27b9e89281824cb
+                - NIAMOTO_DATA_VERSION=e5c9819576670c5e384e8e8e8a7eb74e5731eb09
+                - NIAMOTO_PLANTNOTE_VERSION=07e6ab6f014945fb8b70b3f274709fff349cacd7
+                - NIAMOTO_GEOSERVER_ADMIN_VERSION=676956e1e106f6284f81ac550e80643a7e6bff9a
+                - NIAMOTO_PORTAL_VERSION=f6298c9a4116a102978594fead7f8967eb1f18a5
         depends_on:
             - niamoto-postgres
             - niamoto-geoserver
@@ -55,13 +53,13 @@ services:
             - niamoto-django_site_media:/home/niamoto/niamoto-portal/site_media
         restart: always
 
-    niamoto-ssdm:
-        build: ./niamoto-ssdm
-        ports:
-            - "4037:4037"
-        volumes:
-            - /home/niamoto/SSDM_data:/home/SSDM_data
-        restart: always
+#    niamoto-ssdm:
+#        build: ./niamoto-ssdm
+#        ports:
+#            - "4037:4037"
+#        volumes:
+#            - /home/niamoto/SSDM_data:/home/SSDM_data
+#        restart: always
 
 
 volumes:
