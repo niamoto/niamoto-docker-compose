@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'niamoto_data',
     'niamoto_plantnote',
     'niamoto_geoserver_admin',
+    'niamoto_digitizing',
     'restapi',
     'web_portal',
 

@@ -5,6 +5,7 @@ MAINTAINER Dimitri Justeau <dimitri.justeau@gmail.com>
 ARG NIAMOTO_DATA_VERSION
 ARG NIAMOTO_PLANTNOTE_VERSION
 ARG NIAMOTO_GEOSERVER_ADMIN_VERSION
+ARG NIAMOTO_FOREST_DIGITIZING_VERSION
 ARG NIAMOTO_PORTAL_VERSION
 
 # Update and install git
@@ -51,6 +52,14 @@ RUN git clone https://github.com/niamoto/django-niamoto-geoserver-admin.git && \
     cd .. && \
     sudo pip install -r django-niamoto-geoserver-admin/requirements.txt &&\
     sudo pip install ./django-niamoto-geoserver-admin
+
+# Download and install django-niamoto-forest-digitizing
+RUN git clone https://github.com/niamoto/django-niamoto-forest-digitizing.git && \
+    cd django-niamoto-forest-digitizing && \
+    git checkout $NIAMOTO_FOREST_DIGITIZING_VERSION && \
+    cd .. && \
+    sudo pip install -r django-niamoto-forest-digitizing/requirements.txt &&\
+    sudo pip install ./django-niamoto-forest-digitizing
 
 # Download and install niamoto-portal
 RUN git clone https://github.com/niamoto/niamoto-portal.git && \
