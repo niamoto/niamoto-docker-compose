@@ -24,4 +24,3 @@ exec gunicorn ${DJANGO_WSGI_MODULE}:application \
   --user $USER \
   --bind=0.0.0.0:8000 \
   --pid /home/niamoto/gunicorn.pid
-
