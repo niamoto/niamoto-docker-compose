@@ -44,7 +44,7 @@ services:
                 - NIAMOTO_DATA_VERSION=4e8e5ca005b1c1ad577bb0ab7aa97adcdf8d20e2
                 - NIAMOTO_PLANTNOTE_VERSION=07e6ab6f014945fb8b70b3f274709fff349cacd7
                 - NIAMOTO_GEOSERVER_ADMIN_VERSION=b7590e14257b471c1ee24e6c4e3ad92ff581800d
-                - NIAMOTO_FOREST_DIGITIZING_VERSION=56d4bb9e77d63a1b75526de7e6201cfa1ae06943
+                - NIAMOTO_FOREST_DIGITIZING_VERSION=4048d38735819cbc96bcc3948e575bac11d6b86d
                 - NIAMOTO_PORTAL_VERSION=a48d591c3fe50ba87b722d152d5a2b5110bb0538
         depends_on:
             - niamoto-postgres
