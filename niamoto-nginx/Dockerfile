@@ -11,6 +11,9 @@ RUN rm -v /etc/nginx/nginx.conf
 # Copy the niamoto Nginx conf file
 ADD nginx.conf /etc/nginx/
 
+# Remove nginx default welcome page
+RUN rm /usr/share/nginx/html/index.html
+
 # Append "daemon off;" to the beginning of the configuration
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 

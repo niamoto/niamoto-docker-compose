@@ -192,7 +192,7 @@ CONSTANCE_CONFIG = {
     'EMAIL_PORT': (587, 'Email provider port'),
     'EMAIL_USE_TLS': (True, 'Email use TLS or not'),
     'GEOSERVER_BASE_URL': (
-        'http://niamoto.ird.nc:8080/geoserver/',
+        'http://geoserver.niamoto.ird.nc/geoserver/',
         "Niamoto's geoserver base url"
     ),
 }
