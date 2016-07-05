@@ -1,5 +1,42 @@
 #!/usr/bin/env bash
 
+# Pull last version of django-niamoto-taxa
+cd django-niamoto-data && \
+git pull && \
+cd .. && \
+sudo pip install -r django-niamoto-data/requirements.txt &&\
+sudo pip install ./django-niamoto-data
+
+# Pull last version of django-niamoto-plantnote
+cd django-niamoto-plantnote && \
+git pull && \
+cd .. && \
+sudo pip install -r django-niamoto-plantnote/requirements.txt &&\
+sudo pip install ./django-niamoto-plantnote
+
+# Pull last version of django-niamoto-geoserver-admin
+cd django-niamoto-geoserver-admin && \
+git pull && \
+cd .. && \
+sudo pip install -r django-niamoto-geoserver-admin/requirements.txt &&\
+sudo pip install ./django-niamoto-geoserver-admin
+
+# Pull last version of django-niamoto-forest-digitizing
+cd django-niamoto-forest-digitizing && \
+git pull && \
+cd .. && \
+sudo pip install -r django-niamoto-forest-digitizing/requirements.txt &&\
+sudo pip install ./django-niamoto-forest-digitizing
+
+# Pull last version of niamoto-portal
+cd niamoto-portal && \
+git pull && \
+cd .. && \
+sudo pip install -r niamoto-portal/requirements.txt
+
+# Generate secret key
+python niamoto-portal/generate_secret_key.py --path niamoto-portal/niamoto/settings.py
+
 # Change owner of site media directory to niamoto
 sudo chown -R niamoto /home/niamoto/niamoto-portal/site_media
 

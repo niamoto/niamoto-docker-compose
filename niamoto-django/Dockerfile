@@ -2,12 +2,6 @@ FROM python:3.5
 
 MAINTAINER Dimitri Justeau <dimitri.justeau@gmail.com>
 
-ARG NIAMOTO_DATA_VERSION
-ARG NIAMOTO_PLANTNOTE_VERSION
-ARG NIAMOTO_GEOSERVER_ADMIN_VERSION
-ARG NIAMOTO_FOREST_DIGITIZING_VERSION
-ARG NIAMOTO_PORTAL_VERSION
-
 # Update and install git
 RUN apt-get update && apt-get install -y git && apt-get install sudo && apt-get install daemon
 
@@ -29,44 +23,20 @@ RUN sudo pip install gunicorn
 ADD gunicorn_start.sh ./
 RUN sudo chmod +x ./gunicorn_start.sh
 
-# Download and install django-niamoto-data
-RUN git clone https://github.com/niamoto/django-niamoto-data.git && \
-    cd django-niamoto-data && \
-    git checkout $NIAMOTO_DATA_VERSION && \
-    cd .. && \
-    sudo pip install -r django-niamoto-data/requirements.txt &&\
-    sudo pip install ./django-niamoto-data
+# Download django-niamoto-data
+RUN git clone https://github.com/niamoto/django-niamoto-data.git
 
-# Download and install django-niamoto-plantnote
-RUN git clone https://github.com/niamoto/django-niamoto-plantnote.git && \
-    cd django-niamoto-plantnote && \
-    git checkout $NIAMOTO_PLANTNOTE_VERSION && \
-    cd .. && \
-    sudo pip install -r django-niamoto-plantnote/requirements.txt &&\
-    sudo pip install ./django-niamoto-plantnote
+# Download django-niamoto-plantnote
+RUN git clone https://github.com/niamoto/django-niamoto-plantnote.git
 
-# Download and install django-niamoto-geoserver-admin
-RUN git clone https://github.com/niamoto/django-niamoto-geoserver-admin.git && \
-    cd django-niamoto-geoserver-admin && \
-    git checkout $NIAMOTO_GEOSERVER_ADMIN_VERSION && \
-    cd .. && \
-    sudo pip install -r django-niamoto-geoserver-admin/requirements.txt &&\
-    sudo pip install ./django-niamoto-geoserver-admin
+# Download django-niamoto-geoserver-admin
+RUN git clone https://github.com/niamoto/django-niamoto-geoserver-admin.git
 
-# Download and install django-niamoto-forest-digitizing
-RUN git clone https://github.com/niamoto/django-niamoto-forest-digitizing.git && \
-    cd django-niamoto-forest-digitizing && \
-    git checkout $NIAMOTO_FOREST_DIGITIZING_VERSION && \
-    cd .. && \
-    sudo pip install -r django-niamoto-forest-digitizing/requirements.txt &&\
-    sudo pip install ./django-niamoto-forest-digitizing
+# Download django-niamoto-forest-digitizing
+RUN git clone https://github.com/niamoto/django-niamoto-forest-digitizing.git
 
-# Download and install niamoto-portal
-RUN git clone https://github.com/niamoto/niamoto-portal.git && \
-    cd niamoto-portal && \
-    git checkout $NIAMOTO_PORTAL_VERSION && \
-    cd .. && \
-    sudo pip install -r niamoto-portal/requirements.txt
+# Download niamoto-portal
+RUN git clone https://github.com/niamoto/niamoto-portal.git
 
 # Add the niamoto django template setting file
 ADD settings.py niamoto-portal/niamoto/
@@ -76,9 +46,6 @@ ADD init_superuser.py /home/niamoto
 
 # Add wait_for_postgres script
 ADD wait_for_postgres.py /home/niamoto
-
-# Generate django's secret key
-RUN python niamoto-portal/generate_secret_key.py --path niamoto-portal/niamoto/settings.py
 
 # Prepare celery daemon
 RUN sudo wget -P /etc/init.d https://raw.githubusercontent.com/celery/celery/3.1/extra/generic-init.d/celeryd
