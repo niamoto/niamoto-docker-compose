@@ -24,6 +24,9 @@ RUN rm $CATALINA_HOME/webapps/ROOT/index.jsp
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
+RUN mkdir -p /opt/geoserver/data_dir/logs
+RUN touch /opt/geoserver/data_dir/logs/geoserver.log
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 CMD ["geoserver"]

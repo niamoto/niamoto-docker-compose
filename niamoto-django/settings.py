@@ -47,14 +47,19 @@ INSTALLED_APPS = [
     # Third party
     'mptt',
     'rest_framework',
+    'rest_framework_gis',
     'constance',
     'constance.backends.database',
+    'django_forms_bootstrap',
+    'crispy_forms',
+    'multiselectfield',
 
     # Project
     'niamoto_data',
     'niamoto_plantnote',
     'niamoto_geoserver_admin',
     'niamoto_digitizing',
+    'rapid_inventories',
     'restapi',
     'web_portal',
 
@@ -196,3 +201,5 @@ CONSTANCE_CONFIG = {
         "Niamoto's geoserver base url"
     ),
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
