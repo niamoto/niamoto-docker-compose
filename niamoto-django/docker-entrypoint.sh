@@ -7,13 +7,6 @@ cd .. && \
 sudo pip install -r django-niamoto-data/requirements.txt &&\
 sudo pip install ./django-niamoto-data
 
-# Pull last version of django-niamoto-geoserver-admin
-cd django-niamoto-geoserver-admin && \
-git pull && \
-cd .. && \
-sudo pip install -r django-niamoto-geoserver-admin/requirements.txt &&\
-sudo pip install ./django-niamoto-geoserver-admin
-
 # Pull last version of niamoto-portal
 cd niamoto-portal && \
 git pull && \
