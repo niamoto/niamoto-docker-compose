@@ -26,9 +26,6 @@ RUN sudo chmod +x ./gunicorn_start.sh
 # Download django-niamoto-data
 RUN git clone https://github.com/niamoto/django-niamoto-data.git
 
-# Download django-niamoto-plantnote
-RUN git clone https://github.com/niamoto/django-niamoto-plantnote.git
-
 # Download django-niamoto-geoserver-admin
 RUN git clone https://github.com/niamoto/django-niamoto-geoserver-admin.git
 

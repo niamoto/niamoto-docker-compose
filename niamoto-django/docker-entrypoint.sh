@@ -7,13 +7,6 @@ cd .. && \
 sudo pip install -r django-niamoto-data/requirements.txt &&\
 sudo pip install ./django-niamoto-data
 
-# Pull last version of django-niamoto-plantnote
-cd django-niamoto-plantnote && \
-git pull && \
-cd .. && \
-sudo pip install -r django-niamoto-plantnote/requirements.txt &&\
-sudo pip install ./django-niamoto-plantnote
-
 # Pull last version of django-niamoto-geoserver-admin
 cd django-niamoto-geoserver-admin && \
 git pull && \

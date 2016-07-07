@@ -56,7 +56,7 @@ INSTALLED_APPS = [
 
     # Project
     'niamoto_data',
-    'niamoto_plantnote',
+    'apps.niamoto_plantnote',
     'niamoto_geoserver_admin',
     'apps.forest_digitizing',
     'apps.rapid_inventories',
