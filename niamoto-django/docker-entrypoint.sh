@@ -21,13 +21,6 @@ cd .. && \
 sudo pip install -r django-niamoto-geoserver-admin/requirements.txt &&\
 sudo pip install ./django-niamoto-geoserver-admin
 
-# Pull last version of django-niamoto-forest-digitizing
-cd django-niamoto-forest-digitizing && \
-git pull && \
-cd .. && \
-sudo pip install -r django-niamoto-forest-digitizing/requirements.txt &&\
-sudo pip install ./django-niamoto-forest-digitizing
-
 # Pull last version of niamoto-portal
 cd niamoto-portal && \
 git pull && \

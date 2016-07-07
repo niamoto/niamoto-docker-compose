@@ -58,10 +58,10 @@ INSTALLED_APPS = [
     'niamoto_data',
     'niamoto_plantnote',
     'niamoto_geoserver_admin',
-    'niamoto_digitizing',
-    'rapid_inventories',
-    'restapi',
-    'web_portal',
+    'apps.forest_digitizing',
+    'apps.rapid_inventories',
+    'rest',
+    'web',
 
     # Pinax
     'pinax_theme_bootstrap',
@@ -172,7 +172,7 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
@@ -186,7 +186,7 @@ REST_API_BASE_URL = '/'.join((
     REST_API_VERSION,
 ))
 
-ACCOUNT_HOOKSET = "web_portal.hooks.AccountGmailHookSet"
+ACCOUNT_HOOKSET = "web.hooks.AccountGmailHookSet"
 
 CONSTANCE_CONFIG = {
     # Email configuration

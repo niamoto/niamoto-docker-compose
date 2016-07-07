@@ -32,9 +32,6 @@ RUN git clone https://github.com/niamoto/django-niamoto-plantnote.git
 # Download django-niamoto-geoserver-admin
 RUN git clone https://github.com/niamoto/django-niamoto-geoserver-admin.git
 
-# Download django-niamoto-forest-digitizing
-RUN git clone https://github.com/niamoto/django-niamoto-forest-digitizing.git
-
 # Download niamoto-portal
 RUN git clone https://github.com/niamoto/niamoto-portal.git
 
