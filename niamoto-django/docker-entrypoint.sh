@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-# Pull last version of django-niamoto-taxa
-cd django-niamoto-data && \
-git pull && \
-cd .. && \
-sudo pip install -r django-niamoto-data/requirements.txt &&\
-sudo pip install ./django-niamoto-data
-
 # Pull last version of niamoto-portal
 cd niamoto-portal && \
 git pull && \

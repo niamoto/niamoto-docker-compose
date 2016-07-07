@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     'multiselectfield',
 
     # Project
-    'niamoto_data',
+    'apps.niamoto_data',
     'apps.niamoto_plantnote',
     'apps.geoserver_admin',
     'apps.forest_digitizing',
