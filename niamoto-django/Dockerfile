@@ -2,8 +2,14 @@ FROM python:3.5
 
 MAINTAINER Dimitri Justeau <dimitri.justeau@gmail.com>
 
+# Update sources.list with sid (required for mod_spatialite)
+RUN echo 'deb http://httpredir.debian.org/debian sid main' >> /etc/apt/sources.list
+
 # Update and install git
 RUN apt-get update && apt-get install -y git && apt-get install sudo && apt-get install daemon
+
+# Add mod_spatialite shared library
+RUN apt-get install -y libsqlite3-mod-spatialite
 
 # Install geospatial dependencies
 RUN sudo apt-get install -y binutils libproj-dev gdal-bin
