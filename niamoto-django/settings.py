@@ -27,6 +27,13 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+ADMINS = (
+    ('Dimitri Justeau', 'dimitri.justeau@gmail.com'),
+    ('Philippe Birnbaum', 'philippe.birnbaum@cirad.fr'),
+)
+
+MANAGERS = ADMINS
+
 SITE_ID = 1
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
