@@ -47,6 +47,8 @@ services:
             - niamoto-rabbitmq
         volumes:
             - niamoto-django_site_media:/home/niamoto/niamoto-portal/site_media
+            - /home/niamoto/NIAMOTO_BACKUPS:/home/niamoto/niamoto-portal/data/backups
+
         restart: always
 
 #    niamoto-ssdm:
@@ -73,3 +75,4 @@ volumes:
 
     niamoto-django_site_media:
         external: false
+
