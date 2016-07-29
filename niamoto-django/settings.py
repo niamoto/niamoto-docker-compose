@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'crispy_forms',
     'multiselectfield',
+    'dbbackup',
 
     # Project
     'apps.niamoto_data',
@@ -125,6 +126,14 @@ DATABASES = {
         'USER': 'niamoto',
         'PASSWORD': 'niamoto',
     }
+}
+
+
+# django-dbbackup settings
+
+DBBACKUP_STORAGE = 'dbbackup.storage.filesystem_storage'
+DBBACKUP_STORAGE_OPTIONS = {
+    'location': os.path.join(BASE_DIR, 'data', 'backups')
 }
 
 
