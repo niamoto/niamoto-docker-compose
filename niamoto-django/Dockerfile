@@ -15,6 +15,8 @@ RUN apt-get install -y libsqlite3-mod-spatialite
 RUN sudo apt-get install -y binutils libproj-dev gdal-bin
 
 # Install postgresql-client for dbbackups
+RUN sed -e '/deb http://httpredir.debian.org/debian sid main/ s/^#*/#/' -i /etc/apt/sources.list
+RUN apt-get update
 RUN sudo apt-get install -y postgresql-client --fix-missing
 
 # Upgrade pip
