@@ -14,6 +14,9 @@ RUN apt-get install -y libsqlite3-mod-spatialite
 # Install geospatial dependencies
 RUN sudo apt-get install -y binutils libproj-dev gdal-bin
 
+# Install postgresql-client for dbbackups
+RUN sudo apt-get install -y postgresql-client --fix-missing
+
 # Upgrade pip
 RUN pip install --upgrade pip
 
