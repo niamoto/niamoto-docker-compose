@@ -132,9 +132,21 @@ DATABASES = {
 # django-dbbackup settings
 
 DBBACKUP_STORAGE = 'dbbackup.storage.filesystem_storage'
+DBBACKUP_LOCATION = os.path.join(BASE_DIR, 'data', 'backups')
 DBBACKUP_STORAGE_OPTIONS = {
-    'location': os.path.join(BASE_DIR, 'data', 'backups')
+    'location': DBBACKUP_LOCATION
 }
+
+
+# Niamoto management settings
+
+MONTHLY_BACKUPS_PATH = os.path.join(DBBACKUP_LOCATION, "monthly")
+DAILY_BACKUPS_PATH = os.path.join(DBBACKUP_LOCATION, "daily")
+HOURLY_BACKUPS_PATH = os.path.join(DBBACKUP_LOCATION, "hourly")
+
+MAX_MONTHLY_BACKUP_COUNT = 12
+MAX_DAILY_BACKUP_COUNT = 31
+MAX_HOURLY_BACKUP_COUNT = 24
 
 
 # Password validation
@@ -179,9 +191,6 @@ MEDIA_URL = 'site_media/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'site_media', 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
 
-# Celery settings
-CELERY_BROKER = 'amqp://niamoto-rabbitmq:5672//'
-CELERY_BACKEND = 'amqp://niamoto-rabbitmq:5672//'
 
 # REST settings
 REST_FRAMEWORK = {
