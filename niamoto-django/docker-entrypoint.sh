@@ -9,8 +9,9 @@ sudo pip install -r niamoto-portal/requirements.txt
 # Generate secret key
 python niamoto-portal/generate_secret_key.py --path niamoto-portal/niamoto/settings.py
 
-# Change owner of site media directory to niamoto
+# Change owner of site media and data directory to niamoto
 sudo chown -R niamoto /home/niamoto/niamoto-portal/site_media
+sudo chown -R niamoto /home/niamoto/niamoto-portal/data
 
 # Wait for postgres server to be ready
 sleep 3
