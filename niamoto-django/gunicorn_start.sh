@@ -8,6 +8,8 @@ NUM_WORKERS=1                            # how many worker processes should Guni
 DJANGO_SETTINGS_MODULE=niamoto.settings    # which settings file should Django use (*)
 DJANGO_WSGI_MODULE=niamoto.wsgi            # WSGI module name (*)
 
+mkdir /home/niamoto/log
+
 echo "Starting $NAME as `whoami`"
 
 # Activate the virtual environment
@@ -23,4 +25,5 @@ exec gunicorn ${DJANGO_WSGI_MODULE}:application \
   --workers $NUM_WORKERS \
   --user $USER \
   --bind=0.0.0.0:8000 \
+  --access-logfile /home/niamoto/log/accesslog.log \
   --pid /home/niamoto/gunicorn.pid
