@@ -191,6 +191,9 @@ MEDIA_URL = 'site_media/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'site_media', 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
 
+# Celery settings
+CELERY_BROKER = 'amqp://niamoto-rabbitmq:5672//'
+CELERY_BACKEND = 'amqp://niamoto-rabbitmq:5672//'
 
 # REST settings
 REST_FRAMEWORK = {
