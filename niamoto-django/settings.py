@@ -247,6 +247,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 EXPLORER_CONNECTION_NAME = "readonly"
 
+EXPLORER_PERMISSION_VIEW = lambda u: u.groups.filter(name='team').exists()
+
+EXPLORER_PERMISSION_CHANGE = EXPLORER_PERMISSION_VIEW
+
 EXPLORER_SCHEMA_EXCLUDE_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
