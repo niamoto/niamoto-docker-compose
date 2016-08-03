@@ -27,14 +27,14 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+SITE_ID = 1
+
 ADMINS = (
     ('Dimitri Justeau', 'dimitri.justeau@gmail.com'),
     ('Philippe Birnbaum', 'philippe.birnbaum@cirad.fr'),
 )
 
 MANAGERS = ADMINS
-
-SITE_ID = 1
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
@@ -61,8 +61,10 @@ INSTALLED_APPS = [
     'crispy_forms',
     'multiselectfield',
     'dbbackup',
+    'explorer',
 
     # Project
+    'apps.niamoto_management',
     'apps.niamoto_data',
     'apps.niamoto_plantnote',
     'apps.geoserver_admin',
@@ -125,6 +127,14 @@ DATABASES = {
         'NAME': 'niamoto',
         'USER': 'niamoto',
         'PASSWORD': 'niamoto',
+    },
+    "readonly": {
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
+        'HOST': 'niamoto-postgres',
+        'PORT': '5432',
+        'NAME': 'niamoto',
+        'USER': 'niamoto_readonly',
+        'PASSWORD': 'niamoto_readonly',
     }
 }
 
@@ -195,6 +205,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'site_media', 'media')
 CELERY_BROKER = 'amqp://niamoto-rabbitmq:5672//'
 CELERY_BACKEND = 'amqp://niamoto-rabbitmq:5672//'
 
+
 # REST settings
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -230,3 +241,33 @@ CONSTANCE_CONFIG = {
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+
+# django-sql-explorer settings
+
+EXPLORER_CONNECTION_NAME = "readonly"
+
+EXPLORER_SCHEMA_EXCLUDE_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.admin',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.gis',
+    'django.contrib.sites',
+    'mptt',
+    'rest_framework',
+    'rest_framework_gis',
+    'constance',
+    'constance.backends.database',
+    'django_forms_bootstrap',
+    'crispy_forms',
+    'multiselectfield',
+    'dbbackup',
+    'explorer',
+    'pinax_theme_bootstrap',
+    'bootstrapform',
+    'account',
+    'pinax.webanalytics',
+)
