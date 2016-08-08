@@ -224,7 +224,14 @@ REST_API_BASE_URL = '/'.join((
     REST_API_VERSION,
 ))
 
+
+# Pinax-user-accounts settings
+LOGIN_URL = '/account/login/'
 ACCOUNT_HOOKSET = "web.hooks.AccountGmailHookSet"
+ACCOUNT_EMAIL_UNIQUE = True
+ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
+THEME_CONTACT_EMAIL = 'dimitri.justeau@gmail.com'
+
 
 CONSTANCE_CONFIG = {
     # Email configuration
