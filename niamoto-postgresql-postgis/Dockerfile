@@ -8,8 +8,8 @@ ENV LANG fr_FR.utf8
 # Install PostgreSQL / Postgis
 RUN apt-get update \
       && apt-get install -y --no-install-recommends \
-           postgresql-9.4-postgis-2.2=2.2.2+dfsg-1.pgdg80+1 \
-           postgis=2.2.2+dfsg-1.pgdg80+1 \
+           postgresql-9.4-postgis-2.2 \
+           postgis \
       && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /docker-entrypoint-initdb.d
