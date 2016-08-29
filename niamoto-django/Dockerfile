@@ -37,6 +37,15 @@ RUN sudo pip install gunicorn
 ADD gunicorn_start.sh ./
 RUN sudo chmod +x ./gunicorn_start.sh
 
+# Download django-rest-framework
+RUN git clone https://github.com/dimitri-justeau/django-rest-framework.git
+
+# Download django-rest-framework-docs
+RUN git clone https://github.com/dimitri-justeau/django-rest-framework-docs.git
+
+# Download django-qgis-plugin-repository
+RUN git clone https://github.com/dimitri-justeau/django-qgis-plugin-repository.git
+
 # Download niamoto-portal
 RUN git clone https://github.com/niamoto/niamoto-portal.git
 

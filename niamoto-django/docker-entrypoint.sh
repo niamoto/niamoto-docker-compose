@@ -1,5 +1,24 @@
 #!/usr/bin/env bash
 
+# Pull last version of django-rest-framework and install it
+cd django-rest-framework && \
+git checkout keep_reference_of_routers_in_urls && \
+git pull && \
+sudo python setup.py install && \
+cd ..
+
+# Pull last version of django-rest-framework-docs and install it
+cd django-rest-framework-docs && \
+git pull && \
+sudo python setup.py install && \
+cd ..
+
+# Pull last version of django-qgis-plugin-repository and install it
+cd django-qgis-plugin-repository && \
+git pull && \
+sudo python setup.py develop && \
+cd ..
+
 # Pull last version of niamoto-portal
 cd niamoto-portal && \
 git pull && \
