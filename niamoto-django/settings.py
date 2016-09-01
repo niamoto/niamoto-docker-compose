@@ -144,7 +144,7 @@ DATABASES = {
 
 # django-dbbackup settings
 
-DBBACKUP_STORAGE = 'dbbackup.storage.filesystem_storage'
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_LOCATION = os.path.join(BASE_DIR, 'data', 'backups')
 DBBACKUP_STORAGE_OPTIONS = {
     'location': DBBACKUP_LOCATION
