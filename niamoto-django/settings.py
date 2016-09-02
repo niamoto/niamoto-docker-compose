@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'explorer',
     'rest_framework_docs',
     'qgis_plugin_repository',
+    'oauth2_provider',
 
     # Project
     'apps.niamoto_management',
@@ -209,11 +210,23 @@ CELERY_BROKER = 'amqp://niamoto-rabbitmq:5672//'
 CELERY_BACKEND = 'amqp://niamoto-rabbitmq:5672//'
 
 
+# OAUTH2 settings
+OAUTH2_PROVIDER = {
+    'SCOPES': {
+        'read': 'Read scope',
+    }
+}
+
 # REST settings
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    ],
     'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
@@ -224,9 +237,6 @@ REST_FRAMEWORK = {
 
 REST_FRAMEWORK_DOCS = {
     'HIDE_DOCS': False,
-    'MODULE_ROUTERS': {},
-    'DEFAULT_MODULE_ROUTER': 'router',
-    'DEFAULT_ROUTER': None,
 }
 
 REST_API_URL_PREFIX = 'api'
