@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'apps.geoserver_admin',
     'apps.forest_digitizing',
     'apps.rapid_inventories',
+    'apps.taxon_dashboards',
     'rest',
     'web',
 
