@@ -73,8 +73,9 @@ INSTALLED_APPS = [
     'apps.niamoto_plantnote',
     'apps.geoserver_admin',
     'apps.forest_digitizing',
-    'apps.rapid_inventories',
+    'apps.inventories',
     'apps.taxon_dashboards',
+    'apps.user_occurrences',
     'rest',
     'web',
 
