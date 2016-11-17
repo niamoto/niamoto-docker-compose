@@ -147,6 +147,18 @@ DATABASES = {
 
 # django-dbbackup settings
 
+DBBACKUP_CONNECTORS = {
+    'default': {
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
+        'HOST': 'niamoto-postgres',
+        'PORT': '5432',
+        'NAME': 'niamoto',
+        'USER': 'niamoto',
+        'PASSWORD': 'niamoto',
+        'EXCLUDE': ['mnt10_wgs84', ]
+    }
+}
+
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_LOCATION = os.path.join(BASE_DIR, 'data', 'backups')
 DBBACKUP_STORAGE_OPTIONS = {
