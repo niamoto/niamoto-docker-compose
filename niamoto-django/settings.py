@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'rest_framework_docs',
     'qgis_plugin_repository',
     'oauth2_provider',
+    'revproxy',
 
     # Project
     'apps.niamoto_management',
@@ -75,7 +76,6 @@ INSTALLED_APPS = [
     'apps.forest_digitizing',
     'apps.inventories',
     'apps.taxon_dashboards',
-    'apps.user_occurrences',
     'rest',
     'web',
 
