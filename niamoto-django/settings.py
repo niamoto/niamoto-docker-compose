@@ -149,7 +149,7 @@ DATABASES = {
 
 DBBACKUP_CONNECTORS = {
     'default': {
-        "ENGINE": "django.contrib.gis.db.backends.postgis",
+        "CONNECTOR": "dbbackup.db.postgresql.PgDumpGisConnector",
         'HOST': 'niamoto-postgres',
         'PORT': '5432',
         'NAME': 'niamoto',
