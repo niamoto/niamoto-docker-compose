@@ -21,6 +21,7 @@ RUN rm -rf /tmp/resources
 # Remove tomcat homepage
 RUN rm $CATALINA_HOME/webapps/ROOT/index.jsp
 
+COPY setenv.sh /usr/local/tomcat/bin/setenv.sh
 COPY docker-entrypoint.sh /
 RUN chmod +x /docker-entrypoint.sh
 
