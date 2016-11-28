@@ -28,6 +28,7 @@ services:
         build: ./niamoto-nginx
         ports:
             - "80:80"
+            - "443:443"
             - "8080:8080"
             - "5555:5555"
         depends_on:
@@ -35,6 +36,7 @@ services:
             - niamoto-geoserver
         volumes:
             - /etc/letsencrypt:/etc/letsencrypt
+            - /etc/ssl/certs:/etc/ssl/certs
         volumes_from:
             - niamoto-django:ro
             - niamoto-geoserver:ro
