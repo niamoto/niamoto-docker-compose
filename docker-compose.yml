@@ -33,6 +33,8 @@ services:
         depends_on:
             - niamoto-django
             - niamoto-geoserver
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt
         volumes_from:
             - niamoto-django:ro
             - niamoto-geoserver:ro
@@ -50,14 +52,6 @@ services:
             - /home/niamoto/NIAMOTO_BACKUPS:/home/niamoto/niamoto-portal/data/backups
 
         restart: always
-
-#    niamoto-ssdm:
-#        build: ./niamoto-ssdm
-#        ports:
-#            - "4037:4037"
-#        volumes:
-#            - /home/niamoto/SSDM_data:/home/SSDM_data
-#        restart: always
 
 
 volumes:
