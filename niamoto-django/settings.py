@@ -32,10 +32,11 @@ SITE_ID = 1
 
 ADMINS = (
     ('Dimitri Justeau', 'dimitri.justeau@gmail.com'),
-    ('Philippe Birnbaum', 'philippe.birnbaum@cirad.fr'),
 )
 
 MANAGERS = ADMINS
+
+EMAIL_BACKEND = 'niamoto.email_backends.DynamicEmailBackend'
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
@@ -263,7 +264,7 @@ REST_API_BASE_URL = '/'.join((
 
 # Pinax-user-accounts settings
 LOGIN_URL = '/account/login/'
-ACCOUNT_HOOKSET = "web.hooks.AccountGmailHookSet"
+# ACCOUNT_HOOKSET = "web.hooks.AccountGmailHookSet"
 ACCOUNT_EMAIL_UNIQUE = True
 ACCOUNT_EMAIL_CONFIRMATION_REQUIRED = True
 THEME_CONTACT_EMAIL = 'dimitri.justeau@gmail.com'
