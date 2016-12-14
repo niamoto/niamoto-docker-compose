@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     'apps.forest_digitizing',
     'apps.inventories',
     'apps.taxon_dashboards',
+    'apps.plot_dashboard',
     'rest',
     'web',
 
@@ -251,7 +252,6 @@ REST_FRAMEWORK = {
         'rest_framework.filters.OrderingFilter',
     ),
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 100,
 }
 
 REST_FRAMEWORK_DOCS = {
