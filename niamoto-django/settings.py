@@ -157,7 +157,14 @@ DBBACKUP_CONNECTORS = {
         'NAME': 'niamoto',
         'USER': 'niamoto',
         'PASSWORD': 'niamoto',
-        'EXCLUDE': ['mnt10_wgs84', ]
+        'EXCLUDE': [
+            'mnt10_wgs84',
+            'mnt10_wgs84_contour_lines',
+            'mnt10m_isobands',
+            'mnt10m_isobands_multipolygon',
+            'forest_fragments_3k_by_mnt10m_isobands',
+            'forest_fragments_3k_split_contour_lines',
+        ]
     }
 }
 
