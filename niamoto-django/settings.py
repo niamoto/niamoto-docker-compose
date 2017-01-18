@@ -37,6 +37,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 EMAIL_BACKEND = 'niamoto.email_backends.DynamicEmailBackend'
+DEFAULT_FROM_EMAIL = 'niamoto.nc@gmail.com'
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
 
