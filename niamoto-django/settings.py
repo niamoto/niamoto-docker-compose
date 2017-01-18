@@ -32,6 +32,7 @@ SITE_ID = 1
 
 ADMINS = (
     ('Dimitri Justeau', 'dimitri.justeau@gmail.com'),
+    ('Philippe Birnbaum', 'philippe.birnbaum@cirad.fr'),
 )
 
 MANAGERS = ADMINS
