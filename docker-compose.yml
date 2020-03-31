@@ -1,5 +1,4 @@
-version: '2'
-
+version: "3"
 
 services:
     niamoto-postgres:
@@ -12,34 +11,21 @@ services:
             - PGDATA=/var/lib/postgresql/data/pgdata
         restart: always
 
-    niamoto-geoserver:
-        build: ./niamoto-geoserver
-        volumes:
-            - niamoto-geoserver_data:/opt/geoserver/data_dir
-        depends_on:
-            - niamoto-postgres
-        restart: always
-
-    niamoto-rabbitmq:
-        build: ./niamoto-rabbitmq
-        restart: always
-
     niamoto-nginx:
         build: ./niamoto-nginx
         ports:
             - "80:80"
             - "443:443"
-            - "8080:8080"
-            - "5555:5555"
+
         depends_on:
             - niamoto-django
-            - niamoto-geoserver
+
         volumes:
             - /etc/letsencrypt:/etc/letsencrypt
             - /etc/ssl/certs:/etc/ssl/certs
         volumes_from:
             - niamoto-django:ro
-            - niamoto-geoserver:ro
+
         restart: always
 
     niamoto-django:
@@ -47,14 +33,12 @@ services:
             context: ./niamoto-django
         depends_on:
             - niamoto-postgres
-            - niamoto-geoserver
-            - niamoto-rabbitmq
+
         volumes:
             - niamoto-django_site_media:/home/niamoto/niamoto-portal/site_media
             - /home/niamoto/NIAMOTO_BACKUPS:/home/niamoto/niamoto-portal/data/backups
 
         restart: always
-
 
 volumes:
     niamoto-postgres_data:
@@ -66,9 +50,5 @@ volumes:
     niamoto-postgres_conf:
         external: false
 
-    niamoto-geoserver_data:
-        external: false
-
     niamoto-django_site_media:
         external: false
-

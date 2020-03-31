@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 
 DEFAULT_ADMIN_USERNAME = "niamoto_admin"
-DEFAULT_ADMIN_EMAIL = "niamoto_admin@niamoto.nc"
+DEFAULT_ADMIN_EMAIL = "tmangeard@gmx.fr"
 DEFAULT_ADMIN_PASSWORD = "niamoto"
 
 try:
@@ -15,4 +15,3 @@ except ObjectDoesNotExist:
         DEFAULT_ADMIN_EMAIL,
         DEFAULT_ADMIN_PASSWORD
     )
-
