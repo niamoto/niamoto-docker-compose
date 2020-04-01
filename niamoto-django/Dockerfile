@@ -1,9 +1,9 @@
-FROM python:3.8
+FROM python:3.8.2
 
 MAINTAINER Tristan Mangeard <tmangeard@gmx.fr>
 
 # Update sources.list with sid (required for mod_spatialite)
-RUN echo 'deb http://httpredir.debian.org/debian sid main' >> /etc/apt/sources.list
+# RUN echo 'deb http://httpredir.debian.org/debian sid main' >> /etc/apt/sources.list
 
 # Update and install git
 RUN apt-get update && apt-get install -y git && apt-get install sudo && apt-get install daemon
@@ -18,7 +18,7 @@ RUN apt-get install -y libsqlite3-mod-spatialite --fix-missing
 RUN sudo apt-get install -y binutils libproj-dev gdal-bin
 
 # Install postgresql-client for dbbackups
-RUN sudo sed -e '/deb http\:\/\/httpredir.debian.org\/debian sid main/ s/^#*/#/' -i /etc/apt/sources.list
+# RUN sudo sed -e '/deb http\:\/\/httpredir.debian.org\/debian sid main/ s/^#*/#/' -i /etc/apt/sources.list
 RUN apt-get update
 RUN sudo apt-get install -y postgresql-client --fix-missing
 
@@ -38,16 +38,19 @@ ADD gunicorn_start.sh ./
 RUN sudo chmod +x ./gunicorn_start.sh
 
 # Download niamoto-portal
-RUN git clone https://github.com/niamoto/niamoto-portal.git
+RUN git clone https://github.com/CheckFly/niamoto-portal.git
 
 # Add the niamoto django template setting file
-ADD settings.py niamoto-portal/niamoto/
+# ADD settings.py niamoto-portal/niamoto/
 
 # Add init_superuser script
 ADD init_superuser.py /home/niamoto
 
 # Add wait_for_postgres script
 ADD wait_for_postgres.py /home/niamoto
+
+ENV ENV=PRODUCTION
+ENV DJANGO_SETTINGS_MODULE=niamoto_portal.settings.production
 
 ADD docker-entrypoint.sh /
 RUN sudo chmod +x /docker-entrypoint.sh

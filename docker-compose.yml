@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 
 services:
     niamoto-postgres:
@@ -9,6 +9,8 @@ services:
             - niamoto-postgres_data:/var/lib/postgresql/data/pgdata
         environment:
             - PGDATA=/var/lib/postgresql/data/pgdata
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
         restart: always
 
     niamoto-nginx:
@@ -34,9 +36,12 @@ services:
         depends_on:
             - niamoto-postgres
 
+        environment:
+            - ENV=PRODUCTION
+            - DJANGO_SETTINGS_MODULE=niamoto_portal.settings.production
+
         volumes:
-            - niamoto-django_site_media:/home/niamoto/niamoto-portal/site_media
-            - /home/niamoto/NIAMOTO_BACKUPS:/home/niamoto/niamoto-portal/data/backups
+            - niamoto-django_site_media:/home/niamoto/niamoto-portal/niamoto_portal/staticfiles
 
         restart: always
 

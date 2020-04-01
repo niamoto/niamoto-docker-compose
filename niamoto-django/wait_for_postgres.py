@@ -12,4 +12,4 @@ while True:
         s.close()
         break
     except socket.error as ex:
-        time.sleep(0.1)
+        time.sleep(0.25)

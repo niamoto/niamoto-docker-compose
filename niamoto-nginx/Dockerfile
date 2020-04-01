@@ -10,8 +10,8 @@ RUN rm -v /etc/nginx/nginx.conf
 
 # Copy the niamoto Nginx conf files
 ADD nginx.conf /etc/nginx/
-ADD ssl-niamoto.ird.nc.conf /etc/nginx/snippets
-ADD ssl-params.conf /etc/nginx/snippets
+# ADD ssl-niamoto.ird.nc.conf /etc/nginx/snippets
+# ADD ssl-params.conf /etc/nginx/snippets
 
 # Remove nginx default welcome page
 RUN rm /usr/share/nginx/html/index.html

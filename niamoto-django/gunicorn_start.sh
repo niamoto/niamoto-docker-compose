@@ -1,12 +1,12 @@
 #!/bin/bash
 
-NAME="niamoto-portal"                      # Name of the application (*)
+NAME="niamoto_portal"                      # Name of the application (*)
 DJANGODIR=/home/niamoto/niamoto-portal       # Django project directory (*)
 USER=`whoami`                            # the user to run as (*)
 GROUP=`whoami`                           # the group to run as (*)
 NUM_WORKERS=1                            # how many worker processes should Gunicorn spawn (*)
-DJANGO_SETTINGS_MODULE=niamoto.settings    # which settings file should Django use (*)
-DJANGO_WSGI_MODULE=niamoto.wsgi            # WSGI module name (*)
+DJANGO_SETTINGS_MODULE=niamoto_portal.settings.production    # which settings file should Django use (*)
+DJANGO_WSGI_MODULE=niamoto_portal.wsgi            # WSGI module name (*)
 
 mkdir /home/niamoto/log
 
@@ -17,6 +17,7 @@ cd $DJANGODIR
 # source /var/www/test/venv/bin/activate
 export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
 export PYTHONPATH=$DJANGODIR:$PYTHONPATH
+export ENV=PRODUCTION   
 
 # Start your Django Unicorn
 # Programs meant to be run under supervisor should not daemonize themselves (do not use --daemon)
