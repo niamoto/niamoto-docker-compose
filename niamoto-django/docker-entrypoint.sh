@@ -24,7 +24,7 @@ python niamoto-portal/manage.py makemigrations
 echo "Applying migrations"
 python niamoto-portal/manage.py migrate
 echo "Insert data"
-python niamoto-portal/manage.py loaddata data.json
+python niamoto-portal/manage.py loaddata niamoto-portal/data.json
 
 # Loading fixture data
 # echo "Loading fixtures"
