@@ -40,6 +40,9 @@ RUN sudo chmod +x ./gunicorn_start.sh
 # Download niamoto-portal
 RUN git clone https://github.com/CheckFly/niamoto-portal.git
 
+# Pip install
+RUN sudo pip install -r ./niamoto-portal/requirements.txt
+
 # Add the niamoto django template setting file
 # ADD settings.py niamoto-portal/niamoto/
 
