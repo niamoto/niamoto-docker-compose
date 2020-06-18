@@ -24,7 +24,13 @@ python niamoto-portal/manage.py makemigrations
 echo "Applying migrations"
 python niamoto-portal/manage.py migrate
 echo "Insert data"
-python niamoto-portal/manage.py loaddata niamoto-portal/data.json
+if sudo test -f "/home/niamoto/data/data.json" ; then
+    echo "External File"
+    python niamoto-portal/manage.py loaddata /home/niamoto/data/data.json
+else
+    echo "Internal File"
+    python niamoto-portal/manage.py loaddata niamoto-portal/data.json
+fi
 
 # Loading fixture data
 # echo "Loading fixtures"
