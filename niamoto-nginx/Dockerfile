@@ -20,7 +20,7 @@ RUN rm /usr/share/nginx/html/index.html
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Expose ports
-EXPOSE 80 443
+EXPOSE 80 443 8001
 
 # Start nginx service
 CMD nginx

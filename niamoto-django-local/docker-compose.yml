@@ -1,0 +1,39 @@
+version: "2.2"
+
+services:
+    niamoto-nginx:
+        build: ../niamoto-nginx
+        ports:
+            - "8001:80"
+
+        depends_on:
+            - niamoto-django
+
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt
+            - /etc/ssl/certs:/etc/ssl/certs
+        volumes_from:
+            - niamoto-django:ro
+
+        restart: always
+
+    niamoto-django:
+        build:
+            context: .
+
+        environment:
+            - ENV=PRODUCTION
+            - DJANGO_SETTINGS_MODULE=niamoto_portal.settings.local
+
+        volumes:
+            - niamoto-django_site_media:/home/niamoto/niamoto-portal/niamoto_portal/staticfiles
+            - niamoto-django_data:/home/niamoto-portal/data
+
+        restart: always
+
+volumes:
+    niamoto-django_site_media:
+        external: false
+
+    niamoto-django_data:
+        external: true
