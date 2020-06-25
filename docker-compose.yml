@@ -42,7 +42,7 @@ services:
 
         volumes:
             - niamoto-django_site_media:/home/niamoto/niamoto-portal/niamoto_portal/staticfiles
-            - /home/niamoto-django_data:/home/niamoto/data
+            - niamoto-django_data:/home/niamoto/data
 
         restart: always
 
