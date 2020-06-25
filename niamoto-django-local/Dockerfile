@@ -32,6 +32,9 @@ USER niamoto
 RUN mkdir -p /home/niamoto
 WORKDIR /home/niamoto
 
+# Install generate_data
+ADD generate_data.sh ./
+
 # Install Gunicorn
 RUN sudo pip install gunicorn
 ADD gunicorn_start.sh ./
