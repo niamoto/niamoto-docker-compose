@@ -13,6 +13,10 @@ ADD nginx.conf /etc/nginx/
 # ADD ssl-niamoto.ird.nc.conf /etc/nginx/snippets
 # ADD ssl-params.conf /etc/nginx/snippets
 
+# add page default 502
+ADD 502.html /var/www/html
+ADD 502.css /var/www/html
+
 # Remove nginx default welcome page
 RUN rm /usr/share/nginx/html/index.html
 
