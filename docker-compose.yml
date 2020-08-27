@@ -30,7 +30,7 @@ services:
         command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; niamoto-nginx -s reload; done & niamoto-nginx -g "daemon off;"'''
         restart: always
 
-    niamoto-cerbot:
+    niamoto-certbot:
         image: certbot/certbot
         volumes:
             - ./data/certbot/conf:/etc/letsencrypt
