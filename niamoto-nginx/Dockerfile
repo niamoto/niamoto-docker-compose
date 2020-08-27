@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:buster
 
 # Install Nginx
 RUN apt-get update && apt-get install -y nginx
