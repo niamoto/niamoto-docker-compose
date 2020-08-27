@@ -34,7 +34,7 @@ docker-compose run --rm --entrypoint "\
   openssl req -x509 -nodes -newkey rsa:1024 -days 1\
     -keyout '$path/privkey.pem' \
     -out '$path/fullchain.pem' \
-    -subj '/CN=localhost'" niamoto-certbot
+    -subj '/CN=localhost'" certbot
 echo
 
 
@@ -46,7 +46,7 @@ echo "### Deleting dummy certificate for $domains ..."
 docker-compose run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/live/$domains && \
   rm -Rf /etc/letsencrypt/archive/$domains && \
-  rm -Rf /etc/letsencrypt/renewal/$domains.conf" niamoto-certbot
+  rm -Rf /etc/letsencrypt/renewal/$domains.conf" certbot
 echo
 
 
@@ -67,13 +67,13 @@ esac
 if [ $staging != "0" ]; then staging_arg="--staging"; fi
 
 docker-compose run --rm --entrypoint "\
-  certbot certonly --webroot -w /var/www/certbot \
+  niamoto-certbot certonly --webroot -w /var/www/certbot \
     $staging_arg \
     $email_arg \
     $domain_args \
     --rsa-key-size $rsa_key_size \
     --agree-tos \
-    --force-renewal" niamoto-certbot
+    --force-renewal" certbot
 echo
 
 echo "### Reloading nginx ..."
