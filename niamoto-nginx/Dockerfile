@@ -9,7 +9,7 @@ RUN rm -v /etc/nginx/nginx.conf
 # Copy the niamoto Nginx conf files
 ADD nginx.conf /etc/nginx/
 # ADD ssl-niamoto.ird.nc.conf /etc/nginx/snippets
-# ADD ssl-params.conf /etc/nginx/snippets
+ADD ssl-params.conf /etc/nginx/snippets
 
 # add page default 502
 ADD 502.html /var/www/html
