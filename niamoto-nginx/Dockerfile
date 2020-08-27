@@ -1,7 +1,5 @@
 FROM debian:jessie
 
-MAINTAINER Tristan Mangeard <tmangeard@gmx.fr>
-
 # Install Nginx
 RUN apt-get update && apt-get install -y nginx
 

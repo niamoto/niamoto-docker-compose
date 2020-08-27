@@ -1,7 +1,5 @@
 FROM python:3.8.2
 
-MAINTAINER Tristan Mangeard <tmangeard@gmx.fr>
-
 # Update sources.list with sid (required for mod_spatialite)
 # RUN echo 'deb http://httpredir.debian.org/debian sid main' >> /etc/apt/sources.list
 
