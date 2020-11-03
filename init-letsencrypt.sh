@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains="niamoto.ddns.net"
+domains="niamoto.dsp.nc"
 rsa_key_size=4096
 data_path="./data/certbot"
 email="tmangeard@gmx.fr" # Adding a valid address is strongly recommended
