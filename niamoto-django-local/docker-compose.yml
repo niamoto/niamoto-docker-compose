@@ -2,7 +2,7 @@ version: "2.2"
 
 services:
     niamoto-nginx:
-        build: ../niamoto-nginx
+        build: niamoto-nginx
         ports:
             - "8001:80"
 
@@ -15,6 +15,14 @@ services:
         volumes_from:
             - niamoto-django:ro
 
+        restart: always
+
+    niamoto-certbot:
+        image: certbot/certbot
+        volumes:
+            - ./data/certbot/conf:/etc/letsencrypt
+            - ./data/certbot/www:/var/www/certbot
+        entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
         restart: always
 
     niamoto-django:
