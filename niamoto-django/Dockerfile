@@ -36,7 +36,7 @@ ADD gunicorn_start.sh ./
 RUN sudo chmod +x ./gunicorn_start.sh
 
 # Download niamoto-portal
-RUN git clone https://github.com/CheckFly/niamoto-portal.git
+RUN git clone https://github.com/niamoto/niamoto-portal.git
 
 # Pip install
 RUN sudo pip install -r ./niamoto-portal/requirements.txt
